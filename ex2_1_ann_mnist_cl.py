@@ -48,12 +48,14 @@ class ANN_seq_class(models.Sequential):
 
 # 6. 분류 ANN에 사용할 데이터 불러오기
 import numpy as np
-from keras import datasets  # mnist
+import tensorflow as tf
+# from keras import datasets  # mnist
 from keras.utils import np_utils  # to_categorical
 
 
 def Data_func():
-    (X_train, y_train), (X_test, y_test) = datasets.mnist.load_data()
+    # (X_train, y_train), (X_test, y_test) = datasets.mnist.load_data()
+    (X_train, y_train), (X_test, y_test) = tf.keras.datasets.mnist.load_data()
 
     Y_train = np_utils.to_categorical(y_train)
     Y_test = np_utils.to_categorical(y_test)

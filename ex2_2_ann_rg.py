@@ -17,11 +17,13 @@ class ANN(models.Model):
         self.compile(loss='mse', optimizer='sgd')
 
 # 2. 학습과 평가용 데이터 불러오기
-from keras import datasets
+import tensorflow as tf
+# from keras import datasets
 from sklearn import preprocessing
 
 def Data_func():
-    (X_train, y_train), (X_test, y_test) = datasets.boston_housing.load_data()
+    # (X_train, y_train), (X_test, y_test) = datasets.boston_housing.load_data()
+    (X_train, y_train), (X_test, y_test) = tf.keras.datasets.mnist.load_data()
     scaler = preprocessing.MinMaxScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
